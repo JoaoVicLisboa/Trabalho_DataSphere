@@ -1,0 +1,64 @@
+-- Criando a tabela Chefe
+CREATE TABLE Chefe (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nome VARCHAR(100) NOT NULL,
+    CPF VARCHAR(11) NOT NULL UNIQUE,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Usuario VARCHAR(50) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL
+);
+
+-- Criando a tabela Supervisor
+CREATE TABLE Supervisor (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ChefeID INT NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Setor VARCHAR(50) NOT NULL,
+    CPF VARCHAR(11) NOT NULL UNIQUE,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Sexo CHAR(1),
+    CargaHoraria INT,
+    TarefasConcluidas INT,
+    Salario DECIMAL(10, 2),
+    Usuario VARCHAR(50) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL,
+    FOREIGN KEY (ChefeID) REFERENCES Chefe(ID)
+);
+
+-- Criando a tabela Funcionario
+CREATE TABLE Funcionario (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    SupervisorID INT NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Setor VARCHAR(50) NOT NULL,
+    CPF VARCHAR(11) NOT NULL UNIQUE,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Sexo CHAR(1),
+    CargaHoraria INT,
+    TarefasConcluidas INT,
+    Salario DECIMAL(10, 2),
+    Cargo VARCHAR(100),
+    FOREIGN KEY (SupervisorID) REFERENCES Supervisor(ID)
+);
+
+-- Inserindo dados na tabela Chefe
+INSERT INTO Chefe (Nome, CPF, Email, Usuario, Senha)
+VALUES
+('Luciana Amaral da Cruz', '12345678900', 'luciana.cruz@example.com', 'Luc@34', '12.Fra'),
+('Ricardo Mateus da Silva', '98765432100', 'ricardo.silva@example.com', 'RIc@34', 'Ri32.');
+
+-- Inserindo dados na tabela Supervisor
+INSERT INTO Supervisor (ChefeID, Nome, Setor, CPF, Email, Sexo, CargaHoraria, TarefasConcluidas, Salario, Usuario, Senha)
+VALUES
+(1, 'Ana Souza', 'RH', '11122233300', 'ana.souza@example.com', 'F', 40, 20, 4000.00, 'ana123', 'senha123'),
+(2, 'Pedro Oliveira', 'TI', '22233344400', 'pedro.oliveira@example.com', 'M', 40, 30, 5000.00, 'pedro456', 'senha456'),
+(1, 'Mariana Santos', 'Marketing', '33344455500', 'mariana.santos@example.com', 'F', 35, 25, 4500.00, 'mariana89', 'senha89'),
+(2, 'João Silva', 'Vendas', '44455566600', 'joao.silva@example.com', 'M', 45, 35, 4800.00, 'joao777', 'senha777'),
+(1, 'Julia Pereira', 'Produção', '55566677700', 'julia.pereira@example.com', 'F', 40, 28, 4300.00, 'julia234', 'senha234');
+
+-- Inserindo dados na tabela Funcionario
+INSERT INTO Funcionario (SupervisorID, Nome, Setor, CPF, Email, Sexo, CargaHoraria, TarefasConcluidas, Salario, Cargo)
+VALUES
+(2, 'Alice Ferreira', 'TI', '11122233301', 'alice.ferreira@example.com', 'F', 40, 15, 5000.00, 'Desenvolvedora'),
+(3, 'Bruno Almeida', 'Vendas', '22233344401', 'bruno.almeida@example.com', 'M', 45, 18, 4800.00, 'Vendedor'),
+(4, 'Carla Dias', 'Marketing', '33344455501', 'carla.dias@example.com', 'F', 35, 22, 4500.00, 'Analista de Marketing');
