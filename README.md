@@ -1,5 +1,11 @@
 # Trabalho_DataSphere
 
+## Vídeos Explicativos
+
+- [Vídeo sobre Banco de Dados](https://www.youtube.com/watch?v=A-zU967rxfo)
+- [Vídeo sobre Backend](https://www.youtube.com/watch?v=_h19wxsZ030)
+
+
 ## 1. Introdução
 A API Datasphere foi desenvolvida para centralizar dados essenciais, como tarefas concluídas e horas trabalhadas, com o objetivo de facilitar a análise de desempenho dos funcionários por setor. Este sistema permite que chefes e supervisores gerenciem e monitorem seus funcionários de maneira eficiente e segura.
 
