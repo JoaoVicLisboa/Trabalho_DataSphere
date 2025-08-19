@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const db = new sqlite3.Database('./database.db');
 const PORT = 3000;
-const SECRET_KEY = 'ChaveUltraSecreta';
+const SECRET_KEY = 81D0406A4A670875D0DD9F22253FE96E18A20683FA6230C7DFCD601B;
 
 app.use(bodyParser.json());
 
@@ -117,3 +117,4 @@ app.post('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
